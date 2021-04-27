@@ -9,8 +9,8 @@ var snake = [{
 }];
 
 let food = [{
-    x: Math.floor(Math.random() *  15 +1)* box,
-    y: Math.floor(Math.random() * 15 +1) * box
+    x: Math.floor(Math.random() *  15 )* box,
+    y: Math.floor(Math.random() * 15 ) * box
 }];
 
 console.log(food.x)
