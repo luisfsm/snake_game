@@ -40,8 +40,6 @@ document.addEventListener('keydown',update);
 
 function update(event){
 
-    console.log(event.keyCode)
-
     if(event.keyCode==37 && direction !="right") direction="left"
     if(event.keyCode==38 && direction !="down") direction="up"
     if(event.keyCode==39 && direction !="left") direction="right"
@@ -68,8 +66,15 @@ function iniciarJogo(){
     if(direction=="up") snakeY -= box;
     if(direction=="down") snakeY += box;
 
+    if(snakeX != food[0].x || snakeY != food[0].y){
+        snake.pop();
+    }else{
+        food[0].x = Math.floor(Math.random() *  15 +1)* box,
+        food[0].y = Math.floor(Math.random() * 15 +1) * box
+    }
 
-    snake.pop(); 
+
+
 
     let newHead = {
         x: snakeX ,
