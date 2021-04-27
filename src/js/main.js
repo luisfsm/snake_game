@@ -1,6 +1,7 @@
 let canvas = document.querySelector("#snake");
 let context = canvas.getContext("2d");
 let box = 32;
+let pontuation = 0 ;
 
 var snake = [{
     "x": 8 * box, 
@@ -49,10 +50,18 @@ function update(event){
 
 function iniciarJogo(){
 
+    for(let i = 1 ; i < snake.length;i++){
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+            
+            alert(`Game Over \n a sua pontuação foi : ${pontuation}`);
+            location.reload();
+        }
+    }
+
     if(snake[0].x > 15 * box && direction=="right") snake[0].x = 0;
-    if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
+    if(snake[0].x < 0 && direction == "left") snake[0].x = 15 * box;
     if(snake[0].y > 15 * box && direction=="down") snake[0].y = 0;
-    if(snake[0].y <0 && direction=="up") snake[0].y = 16 * box;
+    if(snake[0].y <0 && direction=="up") snake[0].y = 15 * box;
 
     criarBG();
     criarCobrinha();
@@ -69,8 +78,9 @@ function iniciarJogo(){
     if(snakeX != food[0].x || snakeY != food[0].y){
         snake.pop();
     }else{
-        food[0].x = Math.floor(Math.random() *  15 +1)* box,
-        food[0].y = Math.floor(Math.random() * 15 +1) * box
+        pontuation += 1;
+        food[0].x = Math.floor(Math.random() *  15 +1)* box;
+        food[0].y = Math.floor(Math.random() * 15 +1) * box;
     }
 
 
