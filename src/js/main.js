@@ -18,21 +18,20 @@ console.log(food.x)
 let direction;
 
 function criarBG(){
-    context.fillStyle = "lightgreen";
+    context.fillStyle = "#F2CA50";
     context.fillRect(0 , 0 ,16 * box, 16 * box);
 }
 
 function criarCobrinha(){
     for(var i = 0; i<snake.length;i++ ){
-        
-        context.fillStyle = "green";
+        context.fillStyle = "#027333";
         context.fillRect(snake[i].x, snake[i].y , box , box);
 
     }
 }
 
 function drawFood(){
-    context.fillStyle = "red";
+    context.fillStyle = "#D9042B";
     context.fillRect(food[0].x,food[0].y, box, box);
 }
 
@@ -54,6 +53,7 @@ function iniciarJogo(){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             
             alert(`Game Over \n a sua pontuação foi : ${pontuation}`);
+            clearInterval(jogo);
             location.reload();
         }
     }
@@ -83,16 +83,11 @@ function iniciarJogo(){
         food[0].y = Math.floor(Math.random() * 15 +1) * box;
     }
 
-
-
-
     let newHead = {
         x: snakeX ,
         y: snakeY
     }
-
     snake.unshift(newHead)
-
 }
 
 let jogo = setInterval(iniciarJogo,100);
